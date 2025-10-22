@@ -9,7 +9,6 @@ function showPage(pid) {
   if (pid === 'notes') renderNotes();
 }
 
-// Notes with resource links & .note-link class
 let notes = [
   {
     subject: 'Operating System',
@@ -231,3 +230,4 @@ function submitQuizAnswers(subject) {
 
 // On page load
 renderNotes();
+
