@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pro Study Webpage</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Roboto:400,700" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">STUDY GALAXY🐳💨</div>
+    <nav>
+      <button class="nav-btn active" onclick="showPage('home')">HOME</button>
+      <button class="nav-btn" onclick="showPage('notes')">NOTES SECTION</button>
+      <button class="nav-btn" onclick="showPage('ask')">ASK QUESTION</button>
+      <button class="nav-btn" onclick="showPage('quiz')">QUIZ SECTION</button>
+    </nav>
+  </header>
+  <main>
+    <section id="home" class="page active">
+      <div class="home-hero">
+        <h1>Advance your Learning</h1>
+        <p>
+          Welcome to <span style="color:var(--primary)">Pro Study Webpage</span> — your all-in-one, AI-empowered study destination.<br>
+          <strong>Organize notes</strong>, ask complex questions with AI answers, and test yourself with intelligent subject-based quizzes.<br>
+          Designed for the next-generation learner.
+        </p>
+      </div>
+      <div class="home-features">
+        <div class="feature-card">✨ AI QUESTION SOLVER FOR YOUR DOUBTS</div>
+        <div class="feature-card">📚 STUDY AND EXPLORE EVERY THING IN ONE</div>
+        <div class="feature-card">🧠 PERSONALISED QUIZZES BADES ON THE NOTES</div>
+        <div class="feature-card">🌈 FUTURISTIC AND TENSION FREE COLOR ENVIRONMENT</div>
+        <div class="feature-card">📧 CONTACT AND OWNER INFO BELOW</div>
+      </div>
+      <div class="contact-info-card card">
+        <h3>Contact & Owner Info</h3>
+        <p><strong>Owner:</strong> AUGUSTINE DINU</p>
+        <p><strong>Email:</strong> <a href="mailto:www.augustine9864@gmail.com" class="note-link">click me to mail me🤺</a></p>
+        <p><strong>Contact Number:</strong> +91-7249169943</p>
+      </div>
+    </section>
+
+    <section id="notes" class="page">
+      <div class="card">
+        <h2>Notes Section</h2>
+        <div class="notes-list" id="notesList"></div>
+        <button class="add-note-btn" onclick="addNotePopup()">+ Add New Note</button>
+      </div>
+    </section>
+
+    <section id="ask" class="page">
+      <div class="card">
+        <h2>Ask Question (AI Generator)</h2>
+        <form class="ask-form" onsubmit="event.preventDefault(); submitAIQ();">
+          <label for="ai-question">Type your real-world question below:</label>
+          <textarea id="ai-question" placeholder="e.g. What is the latest news about AI?" required></textarea>
+          <button type="submit" id="askBtn">Ask AI</button>
+          <div class="ai-answer" id="ai-answer"></div>
+        </form>
+      </div>
+    </section>
+
+    <section id="quiz" class="page">
+      <div class="card">
+        <h2>Quiz Section</h2>
+        <div class="quiz-tabs" id="quizTabs"></div>
+        <div class="quiz-section-content" id="quizSectionContent"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Add Note Modal -->
+  <div
+    id="modal"
+    style="
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 10001;
+      align-items: center;
+      justify-content: center;
+    "
+  >
+    <div
+      style="
+        background: var(--glass);
+        padding: 2em;
+        border-radius: 20px;
+        min-width: 270px;
+        max-width: 90vw;
+      "
+    >
+      <h3>Add a Note</h3>
+      <label for="subject">Subject:</label><br />
+      <input
+        id="note-subject"
+        style="width: 230px; padding: 0.2em; font-size: 1em"
+        list="subject-list"
+      /><br /><br />
+      <datalist id="subject-list">
+        <option value="Operating System" />
+        <option value="Data Structures & Algorithms (DSA)" />
+        <option value="Python Programming" />
+        <option value="Computer Networks" />
+        <option value="Database Systems" />
+        <option value="Software Engineering" />
+      </datalist>
+      <label for="note-content">Note Content:</label><br />
+      <textarea
+        id="note-content"
+        style="width: 230px; min-height: 70px; resize: vertical"
+      ></textarea
+      ><br /><br />
+      <button
+        onclick="saveNote()"
+        style="
+          background: var(--primary);
+          color: #061221;
+          font-weight: 700;
+          border-radius: 13px;
+          padding: 0.5em 2em;
+        "
+      >
+        Save
+      </button>
+      <button onclick="closeModal()" style="margin-left: 10px">Cancel</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
