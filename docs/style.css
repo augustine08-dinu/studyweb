@@ -59,10 +59,16 @@ header {
 
 nav {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
-  gap: 1em;
+  align-items: center;
+  gap: 0.5em;
   width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+nav::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
 }
 
 nav button {
@@ -70,13 +76,15 @@ nav button {
   font-weight: 700;
   background: none;
   border: 2px solid var(--primary);
-  border-radius: 30px;
+  border-radius: 25px;
   color: var(--primary);
-  padding: 0.7em 1.8em;
+  padding: 0.5em 1.2em;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
-  box-shadow: 0 1px 14px 0 var(--primary);
+  box-shadow: 0 1px 12px 0 var(--primary);
   outline: none;
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 nav button.active,
@@ -111,7 +119,7 @@ nav button:hover {
 
 .home-hero h1 {
   font-family: 'Orbitron', sans-serif;
-  font-size: 2.8em;
+  font-size: 2.6em;
   color: var(--secondary);
   text-shadow: 0 2px 20px var(--primary);
 }
@@ -313,8 +321,8 @@ nav button:hover {
   }
 
   nav button {
-    flex: 1 1 45%;
-    font-size: 0.95em;
+    font-size: 0.9em;
+    padding: 0.5em 1em;
   }
 }
 
@@ -324,12 +332,21 @@ nav button:hover {
     align-items: center;
   }
 
+  nav {
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    gap: 0.4em;
+  }
+
   nav button {
-    flex: 1 1 100%;
+    flex: 0 0 auto;
+    padding: 0.4em 0.8em;
+    font-size: 0.8em;
+    border-radius: 20px;
   }
 
   .home-hero h1 {
-    font-size: 1.8em;
+    font-size: 1.7em;
   }
 
   .feature-card {
@@ -341,7 +358,7 @@ nav button:hover {
   }
 
   .note-link {
-    display: block;
+    display: inline-block;
     width: fit-content;
   }
 }
