@@ -27,10 +27,11 @@ body {
 main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2.5em 1.5em 4em;
+  padding: 2em 1.5em 4em;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: all 0.3s ease;
 }
 
 /* ====== HEADER & NAV ====== */
@@ -59,16 +60,10 @@ header {
 
 nav {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: 0.5em;
+  gap: 1em;
   width: 100%;
-  overflow-x: auto;
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
-}
-nav::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome/Safari */
 }
 
 nav button {
@@ -78,13 +73,11 @@ nav button {
   border: 2px solid var(--primary);
   border-radius: 25px;
   color: var(--primary);
-  padding: 0.5em 1.2em;
+  padding: 0.6em 1.3em;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
-  box-shadow: 0 1px 12px 0 var(--primary);
+  box-shadow: 0 1px 14px 0 var(--primary);
   outline: none;
-  flex: 0 0 auto;
-  white-space: nowrap;
 }
 
 nav button.active,
@@ -95,9 +88,21 @@ nav button:hover {
   transform: translateY(-2px);
 }
 
-/* ====== PAGES ====== */
+/* ====== PAGE CONTAINER ====== */
+main {
+  width: 100%;
+  overflow: hidden;
+}
+
+.pages-container {
+  display: flex;
+  flex-wrap: nowrap;
+  transition: transform 0.6s ease-in-out;
+  width: 100%;
+}
+
 .page {
-  display: none;
+  flex: 0 0 100%;
   width: 100%;
   animation: fadeIn 0.7s ease-in-out;
 }
@@ -200,44 +205,14 @@ nav button:hover {
   text-decoration: none;
   display: inline-block;
   margin: 4px 4px 4px 0;
-  transition:
-    color 0.18s,
-    background 0.25s,
-    box-shadow 0.25s,
-    transform 0.18s;
+  transition: all 0.25s ease;
 }
 
-.note-link:hover,
-.note-link:focus {
+.note-link:hover {
   color: #0f111a;
   background: linear-gradient(90deg, #f5d300 50%, #08f7fe 110%);
   box-shadow: 0 4px 20px #f5d30080, 0 2px 12px #08f7fe50;
-  transform: scale(1.07) rotate(-1deg);
-  text-decoration: underline;
-  outline: none;
-}
-
-.note-link:active {
-  background: #fe53bb;
-  color: #fff;
-  transform: scale(0.97);
-}
-
-.add-note-btn {
-  margin-top: 1.2em;
-  background: var(--accent);
-  border: none;
-  color: #fff;
-  padding: 0.7em 1.5em;
-  border-radius: 22px;
-  cursor: pointer;
-  font-weight: 700;
-  transition: all 0.23s;
-}
-
-.add-note-btn:hover {
-  background: var(--primary);
-  color: #222;
+  transform: scale(1.05);
 }
 
 /* ====== ASK SECTION ====== */
@@ -310,23 +285,8 @@ nav button:hover {
   width: 100%;
 }
 
-/* ====== MEDIA QUERIES ====== */
-@media (max-width: 900px) {
-  .logo {
-    font-size: 1.8em;
-  }
-
-  .home-hero h1 {
-    font-size: 2.2em;
-  }
-
-  nav button {
-    font-size: 0.9em;
-    padding: 0.5em 1em;
-  }
-}
-
-@media (max-width: 600px) {
+/* ====== MOBILE VIEW (HORIZONTAL SECTIONS) ====== */
+@media (max-width: 768px) {
   header {
     flex-direction: column;
     align-items: center;
@@ -335,18 +295,35 @@ nav button:hover {
   nav {
     justify-content: space-around;
     flex-wrap: nowrap;
+    overflow-x: auto;
     gap: 0.4em;
   }
 
   nav button {
     flex: 0 0 auto;
-    padding: 0.4em 0.8em;
     font-size: 0.8em;
-    border-radius: 20px;
+    padding: 0.5em 0.8em;
+  }
+
+  .pages-container {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .page {
+    flex: 0 0 90%;
+    scroll-snap-align: start;
+    margin-right: 10px;
+    border-radius: 16px;
+  }
+
+  .page.active {
+    display: block;
   }
 
   .home-hero h1 {
-    font-size: 1.7em;
+    font-size: 1.8em;
   }
 
   .feature-card {
@@ -355,10 +332,5 @@ nav button:hover {
 
   .card {
     padding: 1.2em;
-  }
-
-  .note-link {
-    display: inline-block;
-    width: fit-content;
   }
 }
