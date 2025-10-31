@@ -37,34 +37,61 @@ header {
   text-shadow: 0 4px 24px var(--accent), 0 0 2px white;
 }
 
-nav {
+header {
   display: flex;
-  gap: 2em;
+  flex-direction: column; /* stack logo & nav vertically */
+  align-items: center; /* center horizontally */
+  justify-content: center;
+  padding: 1em 0;
+  text-align: center;
 }
 
-nav button {
+.logo {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5em;
+}
+
+/* ✅ Match class name (.nav-btn) instead of nav button */
+.nav-btn {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
-  font-size: 0.5em;
+  font-size: 0.8em; /* small but readable */
   background: none;
   border: 2px solid var(--primary);
   border-radius: 15px;
   color: var(--primary);
-  padding: 0.6em 1.5em;
+  padding: 0.4em 1em; /* reduced padding */
   cursor: pointer;
   transition: all 0.2s cubic-bezier(.4, 2, .6, 1);
-  box-shadow: 0 1px 14px 0 var(--primary);
+  box-shadow: 0 1px 10px 0 var(--primary);
   margin: 0 0.2em;
   outline: none;
   touch-action: manipulation;
 }
 
-nav button.active,
-nav button:hover {
+/* hover & active styles */
+.nav-btn.active,
+.nav-btn:hover {
   background: var(--primary);
   color: var(--bg-dark);
-  box-shadow: 0 1px 18px 0 var(--secondary);
+  box-shadow: 0 1px 15px 0 var(--secondary);
 }
+
+/* center nav buttons in a row */
+nav {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+
+/* push rest of content below header */
+main {
+  margin-top: 2em;
+}
+
 
 main {
   padding: 2em 1em 4em 1em;
@@ -378,4 +405,5 @@ main {
     min-width: 140px;
   }
 }
+
 
