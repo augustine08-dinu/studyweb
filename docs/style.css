@@ -61,7 +61,7 @@ header {
   font-size: 0.8em; /* small but readable */
   background: none;
   border: 2px solid var(--primary);
-  border-radius: 15px;
+  border-radius: 20px;
   color: var(--primary);
   padding: 0.4em 1em; /* reduced padding */
   cursor: pointer;
@@ -405,5 +405,6 @@ main {
     min-width: 140px;
   }
 }
+
 
 
